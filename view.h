@@ -1,4 +1,4 @@
 #include "header.h"
 
 void view();
-void Start_Menu();
+void main_menu();

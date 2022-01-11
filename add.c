@@ -1,12 +1,8 @@
 /*	
-	Add Employee Details to Excel Sheet
-	
-	Execute :
-		make 
+	Add Employee Details to Excel Sheet 
 */
-
-//#include "header.h"
 #include "add.h"
+#if 0
 const char *timestamp(){
 			
 	char *buffer = malloc(max_size);
@@ -30,49 +26,49 @@ const char *timestamp(){
 	
 	return buffer;
 }
-
+#endif
 
 void add()
 {
-	extern employee *first_node,*last_node;
+	extern employee *head,*last;
 	extern int count;
-	printf("Performing Add Operation\n");
-	employee *add_node;
-	add_node = malloc(sizeof(employee));
+	printf("Add Operation\n");
+	employee *new_node;
+	new_node = malloc(sizeof(employee));
 	
 	printf("\nEnter Employee ID : ");
-	scanf("%s",add_node->id);
-	//strcat(add_node->id,"\t");
+	scanf("%s",new_node->empid);
+	
 	
 	printf("\nEnter Name of the Employee : ");
 	getchar();
-	scanf("%[^\n]s",add_node->name);
-	//strcat(add_node->name,"\t");
+	scanf("%[^\n]s",new_node->name);
+	
 	
 	printf("\nEnter Employee Email ID : ");
-	scanf("%s",add_node->email);
-	//strcat(add_node->email,"\t");
+	scanf("%s",new_node->emailid);
+	
 	
 	printf("\nEnter Band : ");
-	scanf("%s",add_node->band);
-	//strcat(add_node->band,"\t");
+	scanf("%s",new_node->band);
+	
 	
 	printf("\nEnter Date of Joining : ");
-	scanf("%s",add_node->date);
-	//strcat(add_node->date,"\t");
+	scanf("%s",new_node->doj);
+	
 	
 	printf("\nEmployee Mobile Number : ");
-	scanf("%s",add_node->mobile);
-	//strcat(add_node->mobile,"\t");
+	scanf("%s",new_node->phoneno);
+	
 	
 	printf("\nEnter Detials of reporting Manager : ");
 	getchar();
-	scanf("%[^\n]s",add_node->manager);
-	//strcat(add_node->manager,"\t");
+	scanf("%[^\n]s",new_node->reporting_manager);
+	
 	
 	
 	char repo;
-	//char totalreportees[max_size]="";
+	
 	printf("\nAny Reportees working under you : Yes(Y)/No(N) : ");
 	scanf(" %c",&repo);
 	
@@ -89,72 +85,41 @@ void add()
 			printf("\nEnter Reportee Name and ID : ");
 			scanf("%[^\n]s",new_entry_reportee);
 			strcat(new_entry_reportee,"/");
-			strcat(add_node->reportees,new_entry_reportee);
+			strcat(new_node->reportees,new_entry_reportee);
 		}
-		add_node->reportees[strlen(add_node->reportees)-1] = '\0';
+		new_node->reportees[strlen(new_node->reportees)-1] = '\0';
 	}
 	
 	else{
-		strcpy(add_node->reportees,"NA");
+		strcpy(new_node->reportees,"NA");
 	}
 	
-	//strcat(add_node->totalreportees,"\t");
+	
 		
 	printf("\nEnter Tech Area of Employee : ");
-	scanf("%s",add_node->techarea);
-	//strcat(add_node->techarea,"\t");
+	scanf("%s",new_node->techarea);
+	
 	
 	
 	printf("\nProject Information : ");
 	getchar();
-	scanf("%[^\n]s",add_node->project);
-	//strcat(add_node->project,"\t");
+	scanf("%[^\n]s",new_node->project_info);
 	
 	
-	strcpy(add_node->status,"Active");			//implicit initialisation
-	//strcat(add_node->status,"\t");
 	
-	strcpy(add_node->employee_relieving_date,"NA");	//implicit initialisation
-	//strcat(add_node->employee_relieving_date,"\n");
+	strcpy(new_node->status,"Active");			//implicit initialisation
 	
-	//fp1 = fopen("sample_data.xlsx","ab");
 	
-	//strcpy(add_node->date_employee_created,timestamp());
-	//strcat(add_node->date_employee_created,"\t");
+	strcpy(new_node->relieving_date,"NA");	//implicit initialisation
 	
-	//fwrite (add_node, sizeof(struct employee), 1, fp1);
 	
-	//if 0
-	/*fprintf(
-		fp1,
-		"%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",
-		add_node->id,
-		add_node->name,
-		add_node->email,
-		add_node->band,
-		add_node->date,
-		add_node->date_employee_created,
-		add_node->mobile,
-		add_node->manager,
-		add_node->techarea,
-		add_node->project,
-		add_node->status,
-		add_node->totalreportees,
-		add_node->employee_relieving_date
-	);
-	fprintf(
-		fp1,"\n");
-
-	//endif 
 	
-	fclose(fp1);
-	free(add_node);
 	
-	printf("Employee Details Successfully added into Excel File\n");
-	*/
-	add_node->next=NULL;
-	last_node->next=add_node;
-	last_node=add_node;
+	
+	
+	new_node->next=NULL;
+	last->next=new_node;
+	last=new_node;
 	count++;
-	Start_Menu();
+	main_menu();
 }

@@ -8,7 +8,7 @@
 
 //extern int count;
 
-void Start_Menu(){
+void main_menu(){
 
 	printf("\nMain Menu\n");
 	
@@ -16,33 +16,33 @@ void Start_Menu(){
 	
 	printf("1.Add\n2.Modify\n3.View\n4.Delete\n*.Exit\n");
 	
-	void (*func[4])();	// Array of Function Pointer
-	func[0] = add;
-	func[1] = modify;
-	func[2] = view;
-	func[3] = delete;
+	void (*funp[4])();	// Array of Function Pointer
+	funp[0] = add;
+	funp[1] = modify;
+	funp[2] = view;
+	funp[3] = delete;
 	
-	char action;
+	char choice;
 	
 	//getchar();
-	scanf(" %c",&action);
-	switch(action){
+	scanf(" %c",&choice);
+	switch(choice){
 		
 		case '1': 
 			//count++;
-			func[0]();
+			funp[0]();
 			break;
 			
 		case '2': 
-			func[1]();
+			funp[1]();
 			break;
 			
 		case '3': 
-			func[2]();
+			funp[2]();
 			break;
 			
 		case '4': 
-			func[3]();
+			funp[3]();
 			break;
 			
 		case '*':
@@ -52,7 +52,7 @@ void Start_Menu(){
 			
 		default :
 			printf("Invalid Option -- Enter Your Responsse again\n");
-			Start_Menu();
+			main_menu();
 		}
 	
 	}
@@ -62,9 +62,9 @@ void main(){
 	printf("In Main Function : \n");
 	
 	//Initialise Start Menu Function
-	database_read();
-	Start_Menu();
-	database_write();
+	read_db();
+	main_menu();
+	write_db();
 	
 	printf("Exited from the program\n");
 	

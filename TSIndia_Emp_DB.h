@@ -1,4 +1,5 @@
 #include "header.h"
 
-void database_read();	
-void database_write();
+void read_db();	
+void write_db();
+void file_length();

@@ -1,4 +1,4 @@
 #include "header.h"
 
 void delete();
-void Start_Menu();
+void main_menu();

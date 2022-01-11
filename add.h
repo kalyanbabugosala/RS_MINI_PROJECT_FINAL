@@ -1,5 +1,5 @@
 #include "header.h"
 
 void add();
-void Start_Menu();
+void main_menu();
 
